@@ -1,10 +1,16 @@
-const express = require('express');
+const express = require('express')
 // const { ensureAuthenticated } = require('../middleware/checkAuth');
 
-const router = express.Router();
+const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.render('index');
-});
+    res.render('index')
+})
 
-module.exports = router;
+//---------- EMT Route -----------/ /
+// localhost:8081/emt/dashboard
+router.get('/emt/dashboard', (req, res) => {
+    res.render('emt/dashboard')
+})
+
+module.exports = router
