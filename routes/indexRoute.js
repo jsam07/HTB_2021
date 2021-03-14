@@ -4,6 +4,10 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
+    res.render('index'); // change back to index.ejs 
+});
+
+router.get('/hospital-dashboard', (req, res) => {
     res.render('hospital-admin', { patients: patients }); // change back to index.ejs 
 });
 
