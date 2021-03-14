@@ -53,21 +53,21 @@
       <div class="columns is-multiline">
         <!-- takes in patients object -- id = patient number, triage = value of 'green' [primary], 'yellow' [warning], or 'red' [danger], symptoms = an array of symptoms -->
         
-        <% for (i = 0; i < Object.keys(patients).length; i++) { %>
+        <% for (i = 0; i < patients.length; i++) { %>
           <!-- set triage BG and text colour -->
           <% let triage; %>
           <% let text; %>
 
-          <% let patientId = Object.keys(patients)[i] %>
-          <% let patientObj = patients[patientId] %>
+          <% let patientObj = patients[i] %>
+          <% let patientId = patientObj.id %>
 
-          <% if (patientObj.triage == 'green') { %>
+          <% if (patientObj.triage === 'Minor') { %>
             <% triage = 'primary'; %>
             <% text = 'white'; %>
-          <% } else if (patientObj.triage == 'yellow') { %>
+          <% } else if (patientObj.triage === 'Delayed') { %>
             <% triage = 'warning'; %>
             <% text = 'black'; %>
-          <% } else if (patientObj.triage == 'red') { %>
+          <% } else if (patientObj.triage === 'Immediate') { %>
             <% triage = 'danger'; %>
             <% text = 'white'; %>
           <% } %>

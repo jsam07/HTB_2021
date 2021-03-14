@@ -1,15 +1,20 @@
 const express = require('express');
-const database = require('../database/database.js');
+const { patientDatabase } = require('../database/database.js');
 // const { ensureAuthenticated } = require('../middleware/checkAuth');
 
 const router = express.Router();
+
+function findPatient(patientID) {
+    return patientDatabase.find((patient) => patient.id === patientID);
+}
 
 // ---------- EMT Route -----------/ /
 // localhost:8081/emt/dashboard
 router.get('/dashboard', (req, res) => {
     // send correct patient to emt
-    console.log(database[123456]);
-    res.render('emt-dashboard', { patient: database[123456] });
+
+    const patient = findPatient('77598365');
+    res.render('emt-dashboard', { patient });
 });
 
 router.post('/dashboard', (req, res) => {
@@ -25,7 +30,8 @@ router.post('/dashboard', (req, res) => {
   pain: '5',
   'N/V': '5'
 } */
-    res.render('emt-dashboard', { patient: database[123456], timestamp: newDate(dateString), vitals: req.body });
+    const patient = findPatient('77598365');
+    res.render('emt-dashboard', { patient, timestamp: new Date(), vitals: req.body });
 });
 
 module.exports = router;

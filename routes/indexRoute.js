@@ -1,6 +1,6 @@
 const express = require('express');
 // const { ensureAuthenticated } = require('../middleware/checkAuth');
-const database = require('../database/database.js');
+const { patientDatabase } = require('../database/database.js');
 
 const router = express.Router();
 
@@ -12,11 +12,11 @@ router.get('/', (req, res) => {
 // localhost:8081/emt/dashboard
 router.get('/emt-dashboard', (req, res) => {
     // send correct patient to emt
-    const userID = res.render('emt-dashboard', { patient: patients[0], vitals: allVitals });
+    res.render('emt-dashboard', { patient: patients[0], vitals: allVitals });
 });
 
 router.get('/hospital-dashboard', (req, res) => {
-    res.render('hospital-admin', { patients: database }); // change back to index.ejs
+    res.render('hospital-admin', { patients: patientDatabase }); // change back to index.ejs
 });
 
 module.exports = router;

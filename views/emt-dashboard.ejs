@@ -122,12 +122,12 @@
                   <table class="table is-hoverable is-striped is-narrow is-fullwidth">
                     <thead>
                         <tr>
-                            <th>Timestamp</th>
-                            <th>HR</th>
-                            <th>RR</th>
-                            <th>BP</th>
-                            <th>Temp</th>
-                            <th>SpO2</th>
+                            <th>Time</th>
+                            <th>HR (/min)</th>
+                            <th>RR (/min)</th>
+                            <th>BP (mgOh)</th>
+                            <th>Temp (C)</th>
+                            <th>SpO2 (%)</th>
                         </tr>
                     </thead>
   
@@ -137,19 +137,19 @@
                                     <%= patient["vitals"][i]["timestamp"] %>
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][i]["hr"] %> /min
+                                    <%= patient["vitals"][i]["hr"] %> 
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][i]["rr"] %> /min
+                                    <%= patient["vitals"][i]["rr"] %>
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][i]["bp"]["systolic"] + "/" + patient["vitals"][0]["bp"]["diastolic"] %> mmHg
+                                    <%= patient["vitals"][i]["bp"]["systolic"] + "/" + patient["vitals"][0]["bp"]["diastolic"] %>
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][i]["temp"] %> C
+                                    <%= patient["vitals"][i]["temp"] %>
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][i]["spO2"] %> %
+                                    <%= patient["vitals"][i]["spO2"] %> 
                                 </td>
                             </tr>
                             <tr>
