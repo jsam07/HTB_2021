@@ -38,6 +38,8 @@ app.use(express.static(PUBLIC_DIR));
  */
 const adminRoute = require('./routes/adminRoute');
 const indexRoute = require('./routes/indexRoute');
+const hospRoute = require('./routes/hospRoute');
+const emtRoute = require('./routes/emtRoute');
 const errorRoute = require('./routes/errorRoute');
 
 /**
@@ -52,6 +54,8 @@ app.use(express.urlencoded({ extended: true }));
  */
 app.use('/', indexRoute);
 app.use('/admin', adminRoute);
+app.use('/emt', emtRoute);
+app.use('/hosp', hospRoute);
 app.use('*', errorRoute);
 
 /**
