@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Health Alert</title>
+
+        <!-- STYLESHEETS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css"
+        />
+        <link rel="stylesheet" href="bulmaStyles.css" />
+        <link rel="stylesheet" href="modal.css" />
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- SCRIPTS -->
+
+        <!-- jQuery CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="index.js"></script>
+
+        <!-- Ionicons -->
+        <script
+            type="module"
+            src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+        ></script>
+        <script
+            nomodule=""
+            src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+        ></script>
+    </head>
+    <body>
+        <div class="container tile is-ancestor">
+            <div class="left-col tile is-3 is-parent">
+                <div class="basic-info-wrapper box is-child">
+                    <div class="content">
+<table>
+    <tr><th>Initials</th><td><%= patient[i].initials %></td></tr>
+    <tr><th>Age</th><td><%= patient[i].age %></td></tr>
+    <tr><th>Initials</th><td><%= patient[i].initials %></td></tr>
+</table>
+                    </div>
+                </div>
+            </div>
+            <div class="right-col column is-vertical is-parent">
+                <div class="vitals-wrapper tile is-child box">
+                    <div class="vital-row-wrapper">
+                        <table
+                            class="table is-bordered is-hoverable is-striped is-narrow"
+                        >
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>HR</th>
+                                    <th>RR</th>
+                                    <th>BP</th>
+                                    <th>Temp</th>
+                                    <th>SpO2</th>
+                                </tr>
+                            </thead>
+                            <% let i=0; %> <t% for(i=0; i < allVitals.length;
+                            i++) { %>
+                            <tr>
+                                <td><%= allVitals[i].timestamp %></td>
+                                <td><%= allUsers[i].heartRate %></td>
+                                <td><%= allUsers[i].respRate %></td>
+                                <td><%= allUsers[i].bloodPressure %></td>
+                                <td><%= allUsers[i].temp %></td>
+                                <td><%= allUsers[i].oxygen %></td>
+                            </tr>
+                            <tr>
+                                <th>Additional notes</th>
+                                <td colspan="5"><%= allVitals[i].notes %></td>
+                            </tr>
+<% } %>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6">
+                                        <form action="addVital" method="post">
+                                            <div class="field ">
+                                                    <label class="label">Add new vitals
+                                                <div class="field-body">
+                                                    <div class="field">
+                                                        <input
+                                                            name="heartRate"
+                                                            class="input"
+                                                            type="number"
+                                                            placeholder="Heart Rate" required="required"
+                                                        />
+                                                    </div>
+                                                    <div class="field">
+                                                        <input
+                                                            name="respRate"
+                                                            class="input"
+                                                            type="number"
+                                                            placeholder="Respiratory Rate" required="required"
+                                                        />
+                                                    </div>
+                                                    <div class="field">
+                                                        <input
+                                                            name="bloodPressure"
+                                                            class="input"
+                                                            type="text"
+                                                            placeholder="Blood Pressure" required="required"
+                                                        />
+                                                    </div>
+                                                    <div class="field">
+                                                        <input
+                                                            name="temp"
+                                                            class="input"
+                                                            type="number"
+                                                            placeholder="Temperature" required="required"
+                                                        />
+                                                    </div>
+                                                    <div class="field">
+                                                        <input
+                                                            name="oxygen"
+                                                            class="input"
+                                                            type="number"
+                                                            placeholder="SpO2" required="required"
+                                                        />
+                                                    </div>
+                                                    </label>
+                                                    <div class="field">
+                                                        <button
+                                                            class="button is-link"
+                                                        >
+                                                            <span>Add</span>
+                                                            <span
+                                                                class="icon is-small"
+                                                            >
+                                                                <i
+                                                                    class="fas fa-plus"
+                                                                ></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="field-body">
+                                                    <div class="field">
+                                                        <label class="label" for="notes">Add additional notes:
+                                                        <textarea
+                                                        name="notes"
+                                                        class="input"
+                                                        type="text"
+                                                        placeholder="Other notes"
+                                                        /> </textarea></label>
+                                                    </div>
+                                                </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="logs-wrapper tile">
+                    <div class="pt-log-wrapper tile box">
+                        <div class="content">
+                            <div class="columns">
+                                Displays the information submitted from patient end
+                                <div class="column">
+                                    TESTING
+                                </div>
+                                <div class="column">
+                                    TESTING
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emt-log-wrapper tile box">
+                        <div class="content">
+                            <form action="addEmtInput" method="post">
+                                Form for emts to enter new information <br />
+                                <textarea
+                                    class="input"
+                                    placeholder="Enter details here"
+                                    name="emtInput"
+                                    id="emtInput"
+                                >
+                                </textarea>
+                                <br />
+                                <button class="button is-link is-medium">
+                                    <span>Save</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
