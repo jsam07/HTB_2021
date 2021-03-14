@@ -41,9 +41,7 @@ const patientDatabase = [
 
     {
         id: '36591661',
-        symptoms: [
-            '',
-        ],
+        symptoms: [],
         triage: 'Minor',
         firstName: 'Thierry',
         lastName: 'Hermès',
@@ -143,6 +141,78 @@ const patientDatabase = [
         allergens: [],
         reportedSymptoms: [],
         other: '',
+    },
+    {
+        id: '543232',
+        symptoms: [
+            'laceration on hand',
+        ],
+        triage: 'Minor',
+        firstName: 'Jenna',
+        lastName: 'Jenkins',
+        age: 47,
+        sex: 'F',
+        chronicIllnesses: [],
+        medications: [],
+        isSmoker: false,
+        isPregnant: false,
+        vitals: [
+            {
+                timestamp: new Date(),
+                hr: 54,
+                rr: 33,
+                bp: {
+                    systolic: 100,
+                    diastolic: 68,
+                },
+                temp: 36,
+                spO2: 93,
+                notes: {
+                    pain: '',
+                    LOC: '',
+                    'N/V': '',
+                },
+            },
+        ],
+        allergies: [''],
+        reportedSymptoms: ['bleeding non stop for 15 mins'],
+        other: 'it might not have been an accident!',
+    },
+    {
+        id: '896541',
+        symptoms: [
+            'abdominal pain', 'abdominal bloating', 'nausea',
+        ],
+        triage: 'Immediate',
+        firstName: 'Ana',
+        lastName: 'Nab',
+        age: 17,
+        sex: 'F',
+        chronicIllnesses: ['Asthma', 'OCD'],
+        medications: ['Ventolin', 'Zoloft'],
+        isSmoker: false,
+        isPregnant: false,
+        vitals: [
+            {
+                timestamp: new Date(),
+                hr: 60,
+                rr: 34,
+                bp: {
+                    systolic: 115,
+                    diastolic: 75,
+                },
+                temp: 39,
+                spO2: 95,
+                notes: {
+                    pain: '',
+                    LOC: '',
+                    'N/V': '',
+                },
+            },
+        ],
+        allergies: ['pollen', 'garlic', 'penicillin'],
+        reportedSymptoms: [],
+        other: 'Abdominal pain reported 1 hour ago',
     },
 
 ];
