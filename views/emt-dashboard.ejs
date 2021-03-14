@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,235 +29,245 @@
     </head>
 
     <body>
-        <nav class="navbar">
-      <div class="navbar-brand">
-        <a href="" class="navbar-item">
-          <img src="/img/logo_blue.png" alt="Health Alert Logo">
-        </a>
-      </div>
-    </nav>
-        <section class="section">
-            <h1 class="title">Dashboard</h1>
-            <div class="tile is-ancestor">
-                <!-- Left column -->
-                <div class="tile is-3 is-parent is-vertical box">
-                    <div class="tile is-child">
-                        <div class="content table-container">
-                            <table class="table is-fullwidth">
-                                <tr>
-                                    <th>ID</th>
-                                    <td>
-                                        <%= patient.id %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Name</th>
-                                    <td>
-                                        <%= patient.firstName + " " + patient.lastName %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Age</th>
-                                    <td>
-                                        <%= patient.age %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Sex</th>
-                                    <td>
-                                        <%= patient.sex %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Chronic Illnesses</th>
-                                    <td>
-                                        <%= patient.chronicIllnesses.join(', ') %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Medication</th>
-                                    <td>
-                                        <%= patient.medications.join(', ') %>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- Right column -->
-                <div class="container">
+    
+      <div class="container is-fluid" id="emt-container">
 
-                    <!-- Vitals box -->
-                    <div class="tile is-parent  ">
-                        <div class="content tile is-child box ">
-                            <table class="table is-bordered is-hoverable is-striped is-narrow">
-                                <thead>
-                                    <tr>
-                                        <th>Timestamp</th>
-                                        <th>HR</th>
-                                        <th>RR</th>
-                                        <th>BP</th>
-                                        <th>Temp</th>
-                                        <th>SpO2</th>
-                                    </tr>
-                                </thead>
-              
-                                 
-                                        <tr>
-                                            <td>
-                                                <%=vitals.timestamp %>
-                                            </td>
-                                            <td>
-                                                <%=vitals.hr %>
-                                            </td>
-                                            <td>
-                                                <%=vitals.rr %>
-                                            </td>
-                                            <td>
-                                                <%=vitals.bp %>
-                                            </td>
-                                            <td>
-                                                <%=vitals.temp %>
-                                            </td>
-                                            <td>
-                                                <%=vitals.spO2 %>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Additional notes</th>
-                                            <td colspan="5">
-                                                ghtesh
-                                            </td>
-                                        </tr>
+        <div class="tile is-ancestor">
 
-                                            <tfoot>
-                                                <tr>
-                                                    <td colspan="6">
-                                                        <form action="addVital" method="post">
-                                                            <div class="field ">
-                                                                <label class="label">Add new vitals
-                                                                    <div class="field-body">
-                                                                        <div class="field">
-                                                                            <input name="heartRate" class="input"
-                                                                                type="number" placeholder="Heart Rate"
-                                                                                required="required" />
-                                                                        </div>
-                                                                        <div class="field">
-                                                                            <input name="respRate" class="input"
-                                                                                type="number"
-                                                                                placeholder="Respiratory Rate"
-                                                                                required="required" />
-                                                                        </div>
-                                                                        <div class="field">
-                                                                            <input name="bloodPressure" class="input"
-                                                                                type="text" placeholder="Blood Pressure"
-                                                                                required="required" />
-                                                                        </div>
-                                                                        <div class="field">
-                                                                            <input name="temp" class="input"
-                                                                                type="number" placeholder="Temperature"
-                                                                                required="required" />
-                                                                        </div>
-                                                                        <div class="field">
-                                                                            <input name="oxygen" class="input"
-                                                                                type="number" placeholder="SpO2"
-                                                                                required="required" />
-                                                                        </div>
-                                                                </label>
-
-                                                            </div>
-
-                                                            <div class="field-body">
-                                                                <div class="field">
-                                                                    <label class="label" for="notes">Add additional
-                                                                        notes:
-                                                                        <textarea name="notes" id="notes" class="textarea"
-                                                                            type="text" rows="5" cols="33" />
-Pain:
-LOC:
-N/V:
-                                                                        </textarea>
-                                                                    </label>
-                                                                    <div class="field">
-                                                                        <button class="button is-link">
-                                                                            <span>Add</span>
-                                                                            <span class="icon is-small">
-                                                                                <i class="fas fa-plus"></i>
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-
-                        </div>
-                        </form>
+          <div class="tile is-parent">
+            <article class="tile is-child notification ">
+              <div class="content">
+                <p class="title">Patient Information</p>
+                <!-- <p class="subtitle">With even more content</p> -->
+                <div class="content">
+                  <table class="table is-fullwidth">
+                    <tr>
+                        <th>ID</th>
+                        <td>
+                            <%= patient.id %>
                         </td>
-                        </tr>
-                        </tfoot>
-                        </table>
-                    </div>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>
+                            <%= patient.firstName + " " + patient.lastName %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Age</th>
+                        <td>
+                            <%= patient.age %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Sex</th>
+                        <td>
+                            <%= patient.sex %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Chronic Illnesses</th>
+                        <td>
+                            <%= patient.chronicIllnesses %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Medication</th>
+                        <td>
+                            <%= patient.medications %>
+                        </td>
+                    </tr>
+                </table>
                 </div>
-                <!-- Lower 2 tiles -->
-                <div class="tile is-parent">
-                    <!-- Patient Logs from reporting user -->
-                    <div class="tile is-child box">
-                        <div class="content">
-                            Displays the information submitted from patient end
-                            <table>
-                                <tr>
-                                    <th></th>
-                                </tr>
-                                <td>Pregnant: no
-                                </td>
-                                <td>Smoker: no
-                                </td>
-                            </table>
-                            <table>
-                                <tr>
-                                    <th>Current Condition</th>
-                                </tr>
-                                <td>
-                                    rtjteh
-                                </td>
-                            </table>
-                            <table>
-                                <tr>
-                                    <th>Medical History</th>
-                                </tr>
-                                <td>
-                                    rfgh
-                                </td>
-                            </table>
-                            <table>
-                                <tr>
-                                    <th>Allergies</th>
-                                </tr>
-                                <td>
-                                    dth
-                                </td>
-                            </table>
+              </div>
+            </article>
+          </div>
 
-                        </div>
-                    </div>
-                    <!-- Notes -->
-                    <div class="tile box is-child">
-                        <div class="content">
-                            <form action="addEmtInput" method="post" class="">
-                                Form for emts to enter new information <br />
-                                <textarea class="textarea" placeholder="Enter details here" name="emtInput"
-                                    id="emtInput">
-                                </textarea>
-                                <br />
-                                <button class="button is-link is-medium">
-                                    <span>Save</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+          <div class="tile is-vertical is-8">
+            <div class="tile is-parent">
+              <article class="tile is-child notification ">
+                <p class="title">Wide tile</p>
+                <p class="subtitle">Aligned with the right tile</p>
+                <div class="content">
+                  <table class="table is-hoverable is-striped is-narrow">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>HR</th>
+                            <th>RR</th>
+                            <th>BP</th>
+                            <th>Temp</th>
+                            <th>SpO2</th>
+                        </tr>
+                    </thead>
+  
+                     
+                            <tr>
+                                <td>
+                                    <%= patient["vitals"][0]["timestamp"] %>
+                                </td>
+                                <td>
+                                    <%=vitals.hr %>
+                                </td>
+                                <td>
+                                    <%=vitals.rr %>
+                                </td>
+                                <td>
+                                    <%=vitals.bp %>
+                                </td>
+                                <td>
+                                    <%=vitals.temp %>
+                                </td>
+                                <td>
+                                    <%=vitals.spO2 %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Additional notes</th>
+                                <td colspan="5">
+                                    ghtesh
+                                </td>
+                            </tr>
+
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6">
+                                            <form action="addVital" method="post">
+                                                <div class="field ">
+                                                    <label class="label">Add new vitals
+                                                        <div class="field-body">
+                                                            <div class="field">
+                                                                <input name="heartRate" class="input"
+                                                                    type="number" placeholder="Heart Rate"
+                                                                    required="required" />
+                                                            </div>
+                                                            <div class="field">
+                                                                <input name="respRate" class="input"
+                                                                    type="number"
+                                                                    placeholder="Respiratory Rate"
+                                                                    required="required" />
+                                                            </div>
+                                                            <div class="field">
+                                                                <input name="bloodPressure" class="input"
+                                                                    type="text" placeholder="Blood Pressure"
+                                                                    required="required" />
+                                                            </div>
+                                                            <div class="field">
+                                                                <input name="temp" class="input"
+                                                                    type="number" placeholder="Temperature"
+                                                                    required="required" />
+                                                            </div>
+                                                            <div class="field">
+                                                                <input name="oxygen" class="input"
+                                                                    type="number" placeholder="SpO2"
+                                                                    required="required" />
+                                                            </div>
+                                                    </label>
+
+                                                </div>
+
+                                                <div class="field-body">
+                                                    <div class="field">
+                                                        <label class="label" for="notes">Add additional
+                                                            notes:
+                                                            <textarea name="notes" id="notes" class="textarea"
+                                                                type="text" rows="5" cols="33" />
+                                                                    Pain:
+                                                                    LOC:
+                                                                    N/V:
+                                                            </textarea>
+                                                        </label>
+                                                        <div class="field">
+                                                            <button class="button is-link">
+                                                                <span>Add</span>
+                                                                <span class="icon is-small">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+
             </div>
-        </section>
+            </form>
+            </td>
+            </tr>
+            </tfoot>
+            </table>
+                </div>
+              </article>
+            </div>
+            <div class="tile">
+              <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification">
+                  <p class="title">Vertical...</p>
+                  <p class="subtitle">Top tile</p>
+                  <div class="content">
+                    Displays the information submitted from patient end
+                    <table>
+                        <tr>
+                            <th></th>
+                        </tr>
+                        <td>Pregnant: no
+                        </td>
+                        <td>Smoker: no
+                        </td>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Current Condition</th>
+                        </tr>
+                        <td>
+                            rtjteh
+                        </td>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Medical History</th>
+                        </tr>
+                        <td>
+                            rfgh
+                        </td>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Allergies</th>
+                        </tr>
+                        <td>
+                            dth
+                        </td>
+                    </table>
+
+                </div>
+                </article>
+              </div>
+              <div class="tile is-parent">
+                <article class="tile is-child notification">
+                  <p class="title">Middle tile</p>
+                  <p class="subtitle">With an image</p>
+                  <form action="addEmtInput" method="post" class="">
+                    Form for emts to enter new information <br />
+                    <textarea class="textarea" placeholder="Enter details here" name="emtInput"
+                        id="emtInput">
+                    </textarea>
+                    <br />
+                    <button class="button is-link is-medium">
+                        <span>Save</span>
+                    </button>
+                </form>
+                </article>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+
+      </div>
+      
+
     </body>
 
 </html>
+```
