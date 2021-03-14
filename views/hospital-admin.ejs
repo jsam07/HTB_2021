@@ -38,7 +38,7 @@
       <div class="columns is-multiline">
         <!-- takes in patients object -- id = patient number, triage = value of 'green' [primary], 'yellow' [warning], or 'red' [danger], symptoms = an array of symptoms -->
         
-        <% patients.forEach(patient => { %>
+        <% for (i = 0; i < patients.length; i++)  patients.forEach(patient => { %>
           <!-- set triage BG and text colour -->
           <% let triage; %>
           <% let text; %>
@@ -59,7 +59,7 @@
               <% for (i = 0; i < 3; i++) { %>
                 <span class="content has-text-<%= text %>"><%= patient.symptoms[i] %></span>
                 <% if (i != 2 ) {%>
-                  <span>//</span>
+                  <span class="content has-text-<%= text %>">//</span>
                 <% } %>
               <% } %>
             </article>
