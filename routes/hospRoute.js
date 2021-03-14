@@ -1,17 +1,15 @@
-const express = require('express')
+const express = require('express');
 // const { ensureAuthenticated } = require('../middleware/checkAuth');
 
-const router = express.Router()
+const router = express.Router();
 
-
-//---------- hospital Route -----------/ /
+// ---------- hospital Route -----------/ /
 // localhost:8081/hosp/dashboard
 router.get('/dashboard', (req, res) => {
-    res.render('hospital-admin', { patients: patients })
-})
+    res.render('hospital-admin', { patients });
+});
 
-
-module.exports = router
+module.exports = router;
 
 // hardcoded patient data
 
@@ -26,19 +24,19 @@ let patients = [
         lastName: 'Doe',
         age: 44,
         sex: 'F',
-        chronicIllnesses: ["Diabetes", "Hypertension"],
-        medications: ["Canagliflozin", "Lisinopril"],
+        chronicIllnesses: ['Diabetes', 'Hypertension'],
+        medications: ['Canagliflozin', 'Lisinopril'],
     },
-]
+];
 
-let allVitals = [
+const allVitals = [
     {
-        patientId: "",
-        timestamp: "12:32",
-        hr: "54",
-        rr: "24",
-        bp: "140/90",
-        temp: "38",
-        spO2: "89"
+        patientId: '',
+        timestamp: '12:32',
+        hr: '54',
+        rr: '24',
+        bp: '140/90',
+        temp: '38',
+        spO2: '89',
     },
-]
+];
