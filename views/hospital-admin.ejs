@@ -53,32 +53,36 @@
       <div class="columns is-multiline">
         <!-- takes in patients object -- id = patient number, triage = value of 'green' [primary], 'yellow' [warning], or 'red' [danger], symptoms = an array of symptoms -->
         
-        <% for (i = 0; i < patients.length; i++) { %>
+        <% for (i = 0; i < Object.keys(patients).length; i++) { %>
           <!-- set triage BG and text colour -->
           <% let triage; %>
           <% let text; %>
-          <% if (patients[i].triage == 'green') { %>
+
+          <% let patientId = Object.keys(patients)[i] %>
+          <% let patientObj = patients[patientId] %>
+
+          <% if (patientObj.triage == 'green') { %>
             <% triage = 'primary'; %>
             <% text = 'white'; %>
-          <% } else if (patients[i].triage == 'yellow') { %>
+          <% } else if (patientObj.triage == 'yellow') { %>
             <% triage = 'warning'; %>
             <% text = 'black'; %>
-          <% } else if (patients[i].triage == 'red') { %>
+          <% } else if (patientObj.triage == 'red') { %>
             <% triage = 'danger'; %>
             <% text = 'white'; %>
           <% } %>
           <!-- input patient data into card previews -->
           <div class="column is-one-third">
             <article class="tile is-child box has-background-<%= triage %>"> 
-              <p id="<%= i %>" class="title has-text-<%= text %>">Patient: <%= patients[i].id %></p>
+              <p id="<%= i %>" class="title has-text-<%= text %>">Patient: <%= patientId %></p>
               <% for (j = 0; j < 3; j++) { %>
-                <span class="content has-text-<%= text %>"><%= patients[i].symptoms[j] %></span>
+                <span class="content has-text-<%= text %>"><%= patientObj.symptoms[j] %></span>
                 <% if (j != 2 ) {%>
                   <span class="content has-text-<%= text %>">//</span>
                 <% } %>
               <% } %>
               <div>
-                <button class="button is-dark mt-4 " onclick="window.location.href='/admin/patient-dashboard?patientId=<%= patients[i].id %>'">See Chart</button>
+                <button class="button is-dark mt-4 " onclick="window.location.href='/admin/patient-dashboard?patientId=<%= patientId %>'">See Chart</button>
               </div>
             </article>
           </div>
