@@ -1,66 +1,73 @@
-const path = require('path');
-const morgan = require('morgan');
-const express = require('express');
+const path = require('path')
+const morgan = require('morgan')
+const express = require('express')
 
 // * LOAD .env VARIABLES
-require('dotenv').config();
+require('dotenv').config()
 
 /**
  * CONSTANTS
  */
-const PORT = process.env.PORT || 8080;
-const PUBLIC_DIR = path.join(__dirname, 'public');
+const PORT = process.env.PORT || 8080
+const PUBLIC_DIR = path.join(__dirname, 'public')
 
 /**
  * START EXPRESS
  */
-const app = express();
+const app = express()
 
 /**
  * CREATE MIDDLEWARE
  */
-morgan((tokens, req, res) => [
-    tokens.method(req, res),
-    tokens.url(req, res),
-    tokens.status(req, res),
-    tokens.res(req, res, 'content-length'), '-',
-    tokens['response-time'](req, res), 'ms',
-].join(' '));
-app.use(morgan('combined'));
+morgan((tokens, req, res) =>
+    [
+        tokens.method(req, res),
+        tokens.url(req, res),
+        tokens.status(req, res),
+        tokens.res(req, res, 'content-length'),
+        '-',
+        tokens['response-time'](req, res),
+        'ms',
+    ].join(' ')
+)
+app.use(morgan('combined'))
 
 /**
-  * APP CONFIGURATION
-  */
-app.use(express.static(PUBLIC_DIR));
+ * APP CONFIGURATION
+ */
+app.use(express.static(PUBLIC_DIR))
 
 /**
  * ROUTES
  */
-const adminRoute = require('./routes/adminRoute');
-const indexRoute = require('./routes/indexRoute');
-const hospRoute = require('./routes/hospRoute');
-const emtRoute = require('./routes/emtRoute');
-const errorRoute = require('./routes/errorRoute');
+const adminRoute = require('./routes/adminRoute')
+const indexRoute = require('./routes/indexRoute')
+const hospRoute = require('./routes/hospRoute')
+const emtRoute = require('./routes/emtRoute')
+const errorRoute = require('./routes/errorRoute')
 
 /**
-  * MIDDLEWARE FOR EXPRESS
-  */
-app.use(express.json());
-app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: true }));
+ * MIDDLEWARE FOR EXPRESS
+ */
+app.use(express.json())
+app.set('view engine', 'ejs')
+app.use(express.urlencoded({ extended: true }))
 
 /**
  * ROUTES MATCHERS
  */
-app.use('/', indexRoute);
-app.use('/admin', adminRoute);
-app.use('/emt', emtRoute);
-app.use('/hosp', hospRoute);
-app.use('*', errorRoute);
+
+app.use('/', indexRoute)
+app.use('/admin', adminRoute)
+app.use('/emt', emtRoute)
+app.use('/hosp', hospRoute)
+app.use('*', errorRoute)
 
 /**
  * START SERVER
  */
 app.listen(PORT, () => {
-    console.log(`🚀 Server has started on port ${PORT} => http://localhost:${PORT}`);
-});
+    console.log(
+        `🚀 Server has started on port ${PORT} => http://localhost:${PORT}`
+    )
+})

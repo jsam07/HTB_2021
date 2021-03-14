@@ -56,7 +56,7 @@
         <div class="tile is-ancestor">
 
           <div class="tile is-parent">
-            <article class="tile is-child notification ">
+            <article class="tile is-child notification box">
               <div class="content">
                 <p class="title">Patient Information</p>
                 <!-- <p class="subtitle">With even more content</p> -->
@@ -89,28 +89,37 @@
                     <tr>
                         <th>Chronic Illnesses</th>
                         <td>
-                            <%= patient.chronicIllnesses %>
+                            <%= patient.chronicIllnesses.join(', ') %>
                         </td>
                     </tr>
                     <tr>
                         <th>Medication</th>
                         <td>
-                            <%= patient.medications %>
+                            <%= patient.medications.join(', ') %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Allergies</th>
+                        <td>
+                            <%= patient.allergies.join(', ') %>
                         </td>
                     </tr>
                 </table>
                 </div>
               </div>
+              <button class="button is-link is-large is-success">
+                        <span>Send to Hospital</span>
+                    </button>
             </article>
           </div>
 
           <div class="tile is-vertical is-8">
             <div class="tile is-parent">
-              <article class="tile is-child notification ">
-                <p class="title">Wide tile</p>
-                <p class="subtitle">Aligned with the right tile</p>
+              <article class="tile is-child notification box">
+                <p class="title">Assessments</p>
+
                 <div class="content">
-                  <table class="table is-hoverable is-striped is-narrow">
+                  <table class="table is-hoverable is-striped is-narrow is-fullwidth">
                     <thead>
                         <tr>
                             <th>Timestamp</th>
@@ -122,40 +131,45 @@
                         </tr>
                     </thead>
   
-                     
+                     <% let i=0; %> <% for(i=0; i < patient["vitals"].length; i++) { %>
                             <tr>
                                 <td>
-                                    <%= patient["vitals"][0]["timestamp"] %>
+                                    <%= patient["vitals"][i]["timestamp"] %>
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][0]["hr"] %>
+                                    <%= patient["vitals"][i]["hr"] %> /min
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][0]["rr"] %>
+                                    <%= patient["vitals"][i]["rr"] %> /min
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][0]["bp"]["systolic"] + "/" + patient["vitals"][0]["bp"]["diastolic"] %>
+                                    <%= patient["vitals"][i]["bp"]["systolic"] + "/" + patient["vitals"][0]["bp"]["diastolic"] %> mmHg
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][0]["temp"] %>
+                                    <%= patient["vitals"][i]["temp"] %> C
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][0]["spO2"] %>
+                                    <%= patient["vitals"][i]["spO2"] %> %
                                 </td>
                             </tr>
                             <tr>
-                                <th>Additional notes</th>
-                                <td colspan="5">
-                                    ghtesh
+                                <td colspan="2">
+                                    <%= patient["vitals"][i]["LOC"] %>
+                                </td>
+                                <td colspan="2">
+                                    <%= patient["vitals"][i]["pain"] %>
+                                </td>
+                                <td colspan="2">
+                                    <%= patient["vitals"][i]["N/V"] %>
                                 </td>
                             </tr>
-
+ <% } %>
                                 <tfoot>
                                     <tr>
                                         <td colspan="6">
-                                            <form action="addVital" method="post">
+                                            <form action="/emt/dashboard" method="post">
                                                 <div class="field ">
-                                                    <label class="label">Add new vitals
+                                                    <label class="label"><h3>Add new vitals</h3>
                                                         <div class="field-body">
                                                             <div class="field">
                                                                 <input name="heartRate" class="input"
@@ -169,8 +183,13 @@
                                                                     required="required" />
                                                             </div>
                                                             <div class="field">
-                                                                <input name="bloodPressure" class="input"
-                                                                    type="text" placeholder="Blood Pressure"
+                                                                <input name="systolicPressure" class="input"
+                                                                    type="number" placeholder="Systolic BP"
+                                                                    required="required" />
+                                                            </div>
+                                                            <div class="field">
+                                                                <input name="diastolicPressure" class="input"
+                                                                    type="number" placeholder="Diastolic BP"
                                                                     required="required" />
                                                             </div>
                                                             <div class="field">
@@ -189,17 +208,27 @@
 
                                                 <div class="field-body">
                                                     <div class="field">
-                                                        <label class="label" for="notes">Add additional
-                                                            notes:
-                                                            <textarea name="notes" id="notes" class="textarea"
-                                                                type="text" rows="5" cols="33" />
-                                                                    Pain:
-                                                                    LOC:
-                                                                    N/V:
-                                                            </textarea>
-                                                        </label>
+
+
+<div class="level">
+    <div class="level-item">
+        <label class="label" for="LOC">LOC: 
+            <textarea name="LOC" id="notes" class="textarea" type="text" rows="2"  /></textarea>
+    </div>
+    <div class="level-item">
+        <label class="label" for="Pain">Pain: 
+            <textarea name="pain" id="notes" class="textarea" type="text" rows="2"  /></textarea>
+    </div>
+    <div class="level-item">
+        <label class="label" for="N/V">Nausea/Vomiting: 
+            <textarea name="N/V" id="notes" class="textarea" type="text" rows="2"  /></textarea>
+    </div>
+</div>
+
+                                                    
                                                         <div class="field">
-                                                            <button class="button is-link">
+                                                        
+                                                            <button class="button is-link addVitals">
                                                                 <span>Add</span>
                                                                 <span class="icon is-small">
                                                                     <i class="fas fa-plus"></i>
@@ -221,42 +250,26 @@
             </div>
             <div class="tile">
               <div class="tile is-parent is-vertical">
-                <article class="tile is-child notification">
-                  <p class="title">Vertical...</p>
-                  <p class="subtitle">Top tile</p>
+                <article class="tile is-child notification box">
+                  <p class="title">Patient Reported</p>
                   <div class="content">
-                    Displays the information submitted from patient end
                     <table>
                         <tr>
-                            <th></th>
+                        <th>Pregnant:
+                        </th>
+                        <td> no</td>
+                        <th>Smoker:
+                        </th>
+                        <td> no</td>
                         </tr>
-                        <td>Pregnant: no
-                        </td>
-                        <td>Smoker: no
-                        </td>
+                        
                     </table>
                     <table>
                         <tr>
-                            <th>Current Condition</th>
+                            <th>Reported Concerns</th>
                         </tr>
                         <td>
-                            rtjteh
-                        </td>
-                    </table>
-                    <table>
-                        <tr>
-                            <th>Medical History</th>
-                        </tr>
-                        <td>
-                            rfgh
-                        </td>
-                    </table>
-                    <table>
-                        <tr>
-                            <th>Allergies</th>
-                        </tr>
-                        <td>
-                            dth
+                            <%= patient.reportedSymptoms.join(', ') %>
                         </td>
                     </table>
 
@@ -264,16 +277,14 @@
                 </article>
               </div>
               <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Middle tile</p>
-                  <p class="subtitle">With an image</p>
+                <article class="tile is-child notification box">
+                  <p class="title">Other notes</p>
                   <form action="addEmtInput" method="post" class="">
-                    Form for emts to enter new information <br />
                     <textarea class="textarea" placeholder="Enter details here" name="emtInput"
                         id="emtInput">
                     </textarea>
                     <br />
-                    <button class="button is-link is-medium">
+                    <button class="button is-link">
                         <span>Save</span>
                     </button>
                 </form>

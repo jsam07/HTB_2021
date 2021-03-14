@@ -12,34 +12,20 @@ router.get('/dashboard', (req, res) => {
     res.render('emt-dashboard', { patient: database[123456] });
 });
 
+router.post('/dashboard', (req, res) => {
+    console.log(req.body);
+    /* {
+  heartRate: '5',
+  respRate: '5',
+  systolicPressure: '5',
+  diastolicPressure: '5',
+  temp: '5',
+  oxygen: '5',
+  LOC: '5',
+  pain: '5',
+  'N/V': '5'
+} */
+    res.render('emt-dashboard', { patient: database[123456], timestamp: newDate(dateString), vitals: req.body });
+});
+
 module.exports = router;
-
-// hardcoded patient data
-
-const patients = [
-    {
-        id: Math.floor(100000 + Math.random() * 900000),
-        symptoms: [
-            'shortness of breath, tightness in chest, dizziness, nausea',
-        ],
-        triage: 'green',
-        firstName: 'Jane',
-        lastName: 'Doe',
-        age: 44,
-        sex: 'F',
-        chronicIllnesses: ['Diabetes', 'Hypertension'],
-        medications: ['Canagliflozin', 'Lisinopril'],
-    },
-];
-
-const allVitals = [
-    {
-        patientId: '',
-        timestamp: '12:32',
-        hr: '54',
-        rr: '24',
-        bp: '140/90',
-        temp: '38',
-        spO2: '89',
-    },
-];
