@@ -14,10 +14,3 @@ router.get('/dashboard', (req, res) => {
 module.exports = router;
 
 
-let patients = database;
-let patientId = Object.keys(patients)[0]
-let patientObj = patients[patientId];
-
-
-console.log(patientObj.symptoms);
-
