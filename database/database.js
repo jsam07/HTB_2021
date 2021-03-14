@@ -3,25 +3,25 @@ const patients = {
         symptoms: [
             'shortness of breath', 'tightness in chest', 'dizziness', 'nausea'
         ],
-        triage: 'green',
-        firstName: 'Jane',
-        lastName: 'Doe',
+        triage: 'yellow',
+        firstName: 'Karan',
+        lastName: 'Outaluk',
         age: 44,
-        sex: 'F',
+        sex: 'M',
         chronicIllnesses: ["Diabetes", "Hypertension"],
         medications: ["Canagliflozin", "Lisinopril"],
         isSmoker: true,
         isPregnant: false,
         vitals: [
             {
-                timestamp: "12:32", // new Date().toString()
-                hr: 54, // number
-                rr: 24, // number
+                timestamp: "12:32", 
+                hr: 80, 
+                rr: 24, 
                 bp: {
                     systolic: 140,
                     diastolic: 90,
-                    }, // bp.systolic + "/" bp.distolic
-                temp: 38, // number
+                    }, 
+                temp: 38,
                 spO2: 89,
                 notes: {
                     pain: "",
@@ -37,28 +37,28 @@ const patients = {
 
     543232: {
         symptoms: [
-            'shortness of breath', 'tightness in chest', 'dizziness', 'nausea'
+            'laceration on hand', 
         ],
         triage: 'green',
-        firstName: 'Jane',
-        lastName: 'Doe',
-        age: 44,
+        firstName: 'Jenna',
+        lastName: 'Jenkins',
+        age: 47,
         sex: 'F',
-        chronicIllnesses: ["Diabetes", "Hypertension"],
-        medications: ["Canagliflozin", "Lisinopril"],
-        isSmoker: true,
+        chronicIllnesses: [],
+        medications: [],
+        isSmoker: false,
         isPregnant: false,
         vitals: [
             {
-                timestamp: "12:32", // new Date().toString()
-                hr: 54, // number
-                rr: 24, // number
+                timestamp: "14:22",
+                hr: 54, 
+                rr: 33, 
                 bp: {
-                    systolic: 140,
-                    diastolic: 90,
-                    }, // bp.systolic + "/" bp.distolic
-                temp: 38, // number
-                spO2: 89,
+                    systolic: 100,
+                    diastolic: 68,
+                    }, 
+                temp: 36, 
+                spO2: 93,
                 notes: {
                     pain: "",
                     LOC: "",
@@ -66,9 +66,44 @@ const patients = {
                 },
             }
         ],
-        allergies: ["peanuts", "anesthetics", "cats", "gluten"],
-        reportedSymptoms: ["breathlessness", "chest pain"],
-        other: "this lady full of regret",
+        allergies: [""],
+        reportedSymptoms: ["bleeding non stop for 15 mins"],
+        other: "it might not have been an accident!",
+    },
+    896541: {
+        symptoms: [
+            'abdominal pain', 'abdominal bloating', 'nausea'
+        ],
+        triage: 'red',
+        firstName: 'Ana',
+        lastName: 'Nab',
+        age: 17,
+        sex: 'F',
+        chronicIllnesses: ["Asthma", "OCD"],
+        medications: ["Ventolin", "Zoloft"],
+        isSmoker: false,
+        isPregnant: false,
+        vitals: [
+            {
+                timestamp: "20:11", 
+                hr: 60, 
+                rr: 34,
+                bp: {
+                    systolic: 115,
+                    diastolic: 75,
+                    }, 
+                temp: 39,
+                spO2: 95,
+                notes: {
+                    pain: "",
+                    LOC: "",
+                    "N/V": "",
+                },
+            }
+        ],
+        allergies: ["pollen", "garlic", "penicillin"],
+        reportedSymptoms: [""],
+        other: "Abdominal pain reported 1 hour ago",
     },
 };
 
