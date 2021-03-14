@@ -55,7 +55,18 @@
               <div class="tile is-child box">
                 <div class="patient-details">
                   <p class="title is-4">Patient Name: <%= `${patient.firstName} ${patient.lastName}` %> 
-                    <span class="tag is-warning">Immediate</span>
+                    
+                    <% let triage = patient.triage ; %>
+                    <% if(triage === 'Minor'){ %>
+                      <span class="tag is-success">Minor</span>
+                    <% } else if (triage === 'Delayed'){ %>  
+                      <span class="tag is-warning">Delayed</span>
+                      <% } else if (triage === 'Immediate'){ %>  
+                        <span class="tag is-danger">Immediate</span>
+                    <% } else { %>
+                      <span class="tag is-dark">Expectant</span>
+                    <% } %>
+
                   </p>
 
                   <p class="title is-5">Patient ID: <%= patient.id %> 

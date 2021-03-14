@@ -1,9 +1,8 @@
 
-
-.hr-header {
-    display: flex;
-    justify-content: space-between;
+.navbar {
+    margin-bottom: 2rem;
 }
+
 
 /* Centering NavBar Menu Items */
 .navbar.has-centered-menu .navbar-start {
