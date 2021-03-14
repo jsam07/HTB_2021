@@ -36,6 +36,7 @@
       </div>
     </nav>
         <section class="section">
+            <h1 class="title">Dashboard</h1>
             <div class="tile is-ancestor">
                 <!-- Left column -->
                 <div class="tile is-3 is-parent is-vertical box">
@@ -45,37 +46,37 @@
                                 <tr>
                                     <th>ID</th>
                                     <td>
-                                        <%= patient[i].id %>
+                                        <%= patient.id %>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Name</th>
                                     <td>
-                                        <%= patient[i].initials %>
+                                        <%= patient.firstName + " " + patient.lastName %>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Age</th>
                                     <td>
-                                        <%= patient[i].age %>
+                                        <%= patient.age %>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Sex</th>
                                     <td>
-                                        <%= patient[i].sex %>
+                                        <%= patient.sex %>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Chronic Illnesses</th>
                                     <td>
-                                        <%= patient[i].conditions %>
+                                        <%= patient.chronicIllnesses %>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Medication</th>
                                     <td>
-                                        <%= patient[i].medication %>
+                                        <%= patient.medications %>
                                     </td>
                                 </tr>
                             </table>
@@ -84,9 +85,10 @@
                 </div>
                 <!-- Right column -->
                 <div class="container">
+
                     <!-- Vitals box -->
-                    <div class="tile is-parent table-container ">
-                        <div class="content tile is-child box">
+                    <div class="tile is-parent  ">
+                        <div class="content tile is-child box ">
                             <table class="table is-bordered is-hoverable is-striped is-narrow">
                                 <thead>
                                     <tr>
@@ -98,35 +100,35 @@
                                         <th>SpO2</th>
                                     </tr>
                                 </thead>
-                                <% let i=0; %>
-                                    <t% for(i=0; i < allVitals.length; i++) { %>
+              
+                                 
                                         <tr>
                                             <td>
-                                                <%= allVitals[i].timestamp %>
+                                                <%=vitals.timestamp %>
                                             </td>
                                             <td>
-                                                <%= allUsers[i].heartRate %>
+                                                <%=vitals.hr %>
                                             </td>
                                             <td>
-                                                <%= allUsers[i].respRate %>
+                                                <%=vitals.rr %>
                                             </td>
                                             <td>
-                                                <%= allUsers[i].bloodPressure %>
+                                                <%=vitals.bp %>
                                             </td>
                                             <td>
-                                                <%= allUsers[i].temp %>
+                                                <%=vitals.temp %>
                                             </td>
                                             <td>
-                                                <%= allUsers[i].oxygen %>
+                                                <%=vitals.spO2 %>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Additional notes</th>
                                             <td colspan="5">
-                                                <%= allVitals[i].notes %>
+                                                ghtesh
                                             </td>
                                         </tr>
-                                        <% } %>
+
                                             <tfoot>
                                                 <tr>
                                                     <td colspan="6">
@@ -205,9 +207,9 @@ N/V:
                                 <tr>
                                     <th></th>
                                 </tr>
-                                <td>Pregnant: <%= patient[i].isPregnant %>
+                                <td>Pregnant: no
                                 </td>
-                                <td>Smoker: <%= patient[i].isSmoker %>
+                                <td>Smoker: no
                                 </td>
                             </table>
                             <table>
@@ -215,7 +217,7 @@ N/V:
                                     <th>Current Condition</th>
                                 </tr>
                                 <td>
-                                    <%= patient[i].condition %>
+                                    rtjteh
                                 </td>
                             </table>
                             <table>
@@ -223,7 +225,7 @@ N/V:
                                     <th>Medical History</th>
                                 </tr>
                                 <td>
-                                    <%= patient[i].medicalHistory %>
+                                    rfgh
                                 </td>
                             </table>
                             <table>
@@ -231,7 +233,7 @@ N/V:
                                     <th>Allergies</th>
                                 </tr>
                                 <td>
-                                    <%= patient[i].allergies %>
+                                    dth
                                 </td>
                             </table>
 

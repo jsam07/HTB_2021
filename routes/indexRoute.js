@@ -9,30 +9,44 @@ router.get('/', (req, res) => {
 
 //---------- EMT Route -----------/ /
 // localhost:8081/emt/dashboard
-router.get('/emt/dashboard', (req, res) => {
-    res.render('emt/dashboard');
+router.get('/emt-dashboard', (req, res) => {
+    //send correct patient to emt
+    let userID = 
+    res.render('emt-dashboard', { patient: patients[0], vitals: allVitals })
 })
 
-
-
-
 router.get('/hospital-dashboard', (req, res) => {
-    res.render('hospital-admin', { patients: patients }); // change back to index.ejs 
-});
+    res.render('hospital-admin', { patients: patients }) // change back to index.ejs
+})
 
-module.exports = router;
-
-
-
+module.exports = router
 
 // hardcoded patient data
 
-
-
 let patients = [
     {
-    id: Math.floor(100000 + Math.random() * 900000),
-    symptoms: ['shortness of breath, tightness in chest, dizziness, nausia'],
-    triage: 'green'
-}
-];
+        id: Math.floor(100000 + Math.random() * 900000),
+        symptoms: [
+            'shortness of breath, tightness in chest, dizziness, nausea',
+        ],
+        triage: 'green',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        age: 44,
+        sex: 'F',
+        chronicIllnesses: ["Diabetes", "Hypertension"],
+        medications: ["Canagliflozin", "Lisinopril"],
+    },
+]
+
+let allVitals = [
+    {
+        patientId: "",
+        timestamp: "12:32",
+        hr: "54",
+        rr: "24",
+        bp: "140/90",
+        temp: "38",
+        spO2: "89"
+    },
+]
