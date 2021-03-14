@@ -26,13 +26,28 @@
   <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <nav class="navbar">
+  <header>
+    <nav class="navbar is-link has-centered-menu" role="navigation" aria-label="Main Navigation">
       <div class="navbar-brand">
-        <a href="" class="navbar-item">
-          <img src="/img/logo_blue.png" alt="Health Alert Logo">
+        <a class="navbar-item"  href="/" >
+          <img src="/img/logo_white.png" alt="Health Alert Logo">
         </a>
+    
+        <label for="toggler" class="navbar-burger burger" >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </label>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+              <a class="navbar-item" href="/emt/dashboard"> <strong>EMT Dashboard</strong>  </a>
+              <a class="navbar-item" href="/hosp/dashboard"> <strong>Hospital Dashboard</strong></a>
+        </div>
       </div>
     </nav>
+  </header>
     <section class="section">
       <!-- tile container -->
       <div class="columns is-multiline">
@@ -44,28 +59,30 @@
           <% let text; %>
 
           <% let patientId = Object.keys(patients)[i] %>
-          <% if (patientId == 'green') { %>
+          <% let patientObj = patients[patientId] %>
+
+          <% if (patientObj.triage == 'green') { %>
             <% triage = 'primary'; %>
             <% text = 'white'; %>
-          <% } else if (patients[i].triage == 'yellow') { %>
+          <% } else if (patientObj.triage == 'yellow') { %>
             <% triage = 'warning'; %>
             <% text = 'black'; %>
-          <% } else if (patients[i].triage == 'red') { %>
+          <% } else if (patientObj.triage == 'red') { %>
             <% triage = 'danger'; %>
             <% text = 'white'; %>
           <% } %>
           <!-- input patient data into card previews -->
           <div class="column is-one-third">
             <article class="tile is-child box has-background-<%= triage %>"> 
-              <p id="<%= i %>" class="title has-text-<%= text %>">Patient: <%= patients[i].id %></p>
+              <p id="<%= i %>" class="title has-text-<%= text %>">Patient: <%= patientId %></p>
               <% for (j = 0; j < 3; j++) { %>
-                <span class="content has-text-<%= text %>"><%= patients[i].symptoms[j] %></span>
+                <span class="content has-text-<%= text %>"><%= patientObj.symptoms[j] %></span>
                 <% if (j != 2 ) {%>
                   <span class="content has-text-<%= text %>">//</span>
                 <% } %>
               <% } %>
               <div>
-                <button class="button is-dark mt-4 " onclick="window.location.href='/admin/patient-dashboard?patientId=<%= patients[i].id %>'">See Chart</button>
+                <button class="button is-dark mt-4 " onclick="window.location.href='/admin/patient-dashboard?patientId=<%= patientId %>'">See Chart</button>
               </div>
             </article>
           </div>
