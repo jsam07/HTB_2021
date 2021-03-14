@@ -14,7 +14,6 @@ router.get('/dashboard', (req, res) => {
 
 router.post('/dashboard', (req, res) => {
     console.log(req.body)
-    res.render('emt-dashboard', { patient: database[123456] })
     /* {
   heartRate: '5',
   respRate: '5',
@@ -26,6 +25,7 @@ router.post('/dashboard', (req, res) => {
   pain: '5',
   'N/V': '5'
 } */
+    res.render('emt-dashboard', { patient: database[123456], timestamp: newDate(dateString), vitals: req.body })
 })
 
 module.exports = router;
