@@ -131,43 +131,43 @@
                         </tr>
                     </thead>
   
-                     
+                     <% let i=0; %> <% for(i=0; i < patient["vitals"].length; i++) { %>
                             <tr>
                                 <td>
-                                    <%= patient["vitals"][0]["timestamp"] %>
+                                    <%= patient["vitals"][i]["timestamp"] %>
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][0]["hr"] %>
+                                    <%= patient["vitals"][i]["hr"] %> /min
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][0]["rr"] %>
+                                    <%= patient["vitals"][i]["rr"] %> /min
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][0]["bp"]["systolic"] + "/" + patient["vitals"][0]["bp"]["diastolic"] %>
+                                    <%= patient["vitals"][i]["bp"]["systolic"] + "/" + patient["vitals"][0]["bp"]["diastolic"] %> mmHg
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][0]["temp"] %>
+                                    <%= patient["vitals"][i]["temp"] %> C
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][0]["spO2"] %>
+                                    <%= patient["vitals"][i]["spO2"] %> %
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <%= patient["vitals"][0]["LOC"] %>
+                                    <%= patient["vitals"][i]["LOC"] %>
                                 </td>
                                 <td colspan="2">
-                                    <%= patient["vitals"][0]["pain"] %>
+                                    <%= patient["vitals"][i]["pain"] %>
                                 </td>
                                 <td colspan="2">
-                                    <%= patient["vitals"][0]["N/V"] %>
+                                    <%= patient["vitals"][i]["N/V"] %>
                                 </td>
                             </tr>
-
+ <% } %>
                                 <tfoot>
                                     <tr>
                                         <td colspan="6">
-                                            <form action="addVital" method="post">
+                                            <form action="/emt/dashboard" method="post">
                                                 <div class="field ">
                                                     <label class="label"><h3>Add new vitals</h3>
                                                         <div class="field-body">
@@ -213,18 +213,15 @@
 <div class="level">
     <div class="level-item">
         <label class="label" for="LOC">LOC: 
-            <textarea name="LOC" id="notes" class="textarea" type="text" rows="2"  />
-            </textarea>
+            <textarea name="LOC" id="notes" class="textarea" type="text" rows="2"  /></textarea>
     </div>
     <div class="level-item">
         <label class="label" for="Pain">Pain: 
-            <textarea name="pain" id="notes" class="textarea" type="text" rows="2"  />
-            </textarea>
+            <textarea name="pain" id="notes" class="textarea" type="text" rows="2"  /></textarea>
     </div>
     <div class="level-item">
         <label class="label" for="N/V">Nausea/Vomiting: 
-            <textarea name="N/V" id="notes" class="textarea" type="text" rows="2"  />
-            </textarea>
+            <textarea name="N/V" id="notes" class="textarea" type="text" rows="2"  /></textarea>
     </div>
 </div>
 
