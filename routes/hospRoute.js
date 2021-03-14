@@ -4,12 +4,10 @@ const express = require('express')
 const router = express.Router()
 
 
-//---------- EMT Route -----------/ /
-// localhost:8081/emt/dashboard
+//---------- hospital Route -----------/ /
+// localhost:8081/hosp/dashboard
 router.get('/dashboard', (req, res) => {
-    //send correct patient to emt
-    // let userID = 
-    res.render('emt-dashboard', { patient: patients[0], vitals: allVitals })
+    res.render('hospital-admin', { patients: patients })
 })
 
 
