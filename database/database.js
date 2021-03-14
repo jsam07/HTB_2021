@@ -1,7 +1,11 @@
 const patients = {
     123456: {
+        id: 123456,
         symptoms: [
-            'shortness of breath', 'tightness in chest', 'dizziness', 'nausea'
+            'shortness of breath',
+            'tightness in chest',
+            'dizziness',
+            'nausea',
         ],
         triage: 'yellow',
         firstName: 'Karan',
@@ -23,16 +27,14 @@ const patients = {
                     }, 
                 temp: 38,
                 spO2: 89,
-                notes: {
-                    pain: "",
-                    LOC: "",
-                    "N/V": "",
-                },
-            }
+                pain: '7/10 sharp pain to upper middle chest',
+                LOC: 'drowsy, Ox3',
+                'N/V': 'nauseous',
+            },
         ],
-        allergies: ["peanuts", "anesthetics", "cats", "gluten"],
-        reportedSymptoms: ["breathlessness", "chest pain"],
-        other: "this lady full of regret",
+        allergies: ['peanuts', 'anesthetics', 'cats', 'gluten'],
+        reportedSymptoms: ['breathlessness', 'chest pain'],
+        other: 'this lady full of regret',
     },
 
     543232: {
@@ -105,6 +107,6 @@ const patients = {
         reportedSymptoms: [""],
         other: "Abdominal pain reported 1 hour ago",
     },
-};
+}
 
-module.exports = patients;
+module.exports = patients
