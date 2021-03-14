@@ -35,10 +35,11 @@
     </nav>
     <section class="section">
       <!-- tile container -->
-      <div class="tile is-ancestor is-fluid">
+      <div class="columns is-multiline">
         <!-- takes in patients object -- id = patient number, triage = value of 'green' [primary], 'yellow' [warning], or 'red' [danger], symptoms = an array of symptoms -->
         
         <% patients.forEach(patient => { %>
+          <!-- set triage BG and text colour -->
           <% let triage; %>
           <% let text; %>
           <% if (patient.triage == 'green') { %>
@@ -51,7 +52,8 @@
             <% triage = 'danger'; %>
             <% text = 'white'; %>
           <% } %>
-          <div class="tile is-parent">
+          <!-- input patient data into card previews -->
+          <div class="column is-one-third">
             <article class="tile is-child box has-background-<%= triage %>"> 
               <p class="title has-text-<%= text %>">Patient: <%= patient.id  %></p>
               <% for (i = 0; i < 2; i++) { %>
@@ -61,25 +63,25 @@
           </div>
         <% }); %>
 
-          <div class="tile is-parent">
+          <div class="column is-one-third">
             <article class="tile is-child box">
               <p class="title">One</p>
               <p class="content">Subtitle</p>
             </article>
           </div>
-          <div class="tile is-parent">
+          <div class="column is-one-third">
             <article class="tile is-child box">
               <p class="title">Two</p>
               <p class="subtitle">Subtitle</p>
             </article>
           </div>
-          <div class="tile is-parent ">
+          <div class="column is-one-third">
             <article class="tile is-child box has-background-primary">
               <p class="title has-text-white">Four</p>
               <p class="subtitle has-text-white">Subtitle</p>
             </article>
           </div>
-          <div class="tile is-parent ">
+          <div class="column is-one-third">
             <article class="tile is-child box has-background-primary">
               <p class="title has-text-white">Four</p>
               <p class="subtitle has-text-white">Subtitle</p>
