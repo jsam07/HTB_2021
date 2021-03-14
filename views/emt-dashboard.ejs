@@ -70,13 +70,13 @@
                                 <tr>
                                     <th>Chronic Illnesses</th>
                                     <td>
-                                        <%= patient.chronicIllnesses %>
+                                        <%= patient.chronicIllnesses.join(', ') %>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Medication</th>
                                     <td>
-                                        <%= patient.medications %>
+                                        <%= patient.medications.join(', ') %>
                                     </td>
                                 </tr>
                             </table>
