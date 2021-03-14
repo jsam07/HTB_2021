@@ -104,26 +104,22 @@
                      
                             <tr>
                                 <td>
-<<<<<<< HEAD
                                     <%= patient["vitals"][0]["timestamp"] %>
-=======
-                                    <%=vitals.timestamp %>
->>>>>>> f9e8ac5ed96a2e474ae62f6514534ad18f0e1e35
                                 </td>
                                 <td>
-                                    <%=vitals.hr %>
+                                    <%= patient["vitals"][0]["hr"] %>
                                 </td>
                                 <td>
-                                    <%=vitals.rr %>
+                                    <%= patient["vitals"][0]["rr"] %>
                                 </td>
                                 <td>
-                                    <%=vitals.bp %>
+                                    <%= patient["vitals"][0]["bp"]["systolic"] + "/" + patient["vitals"][0]["bp"]["diastolic"] %>
                                 </td>
                                 <td>
-                                    <%=vitals.temp %>
+                                    <%= patient["vitals"][0]["temp"] %>
                                 </td>
                                 <td>
-                                    <%=vitals.spO2 %>
+                                    <%= patient["vitals"][0]["spO2"] %>
                                 </td>
                             </tr>
                             <tr>
