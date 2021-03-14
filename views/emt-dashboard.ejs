@@ -107,9 +107,6 @@
                 </table>
                 </div>
               </div>
-              <button class="button is-link is-large is-success">
-                        <span>Send to Hospital</span>
-                    </button>
             </article>
           </div>
 
@@ -143,7 +140,7 @@
                                     <%= patient["vitals"][i]["rr"] %>
                                 </td>
                                 <td>
-                                    <%= patient["vitals"][i]["bp"]["systolic"] + "/" + patient["vitals"][0]["bp"]["diastolic"] %>
+                                    <%= patient["vitals"][i]["bp"]["systolic"] + "/" + patient["vitals"][i]["bp"]["diastolic"] %>
                                 </td>
                                 <td>
                                     <%= patient["vitals"][i]["temp"] %>
@@ -167,6 +164,7 @@
                                 <tfoot>
                                     <tr>
                                         <td colspan="6">
+                                            <!-- form start -->
                                             <form action="/emt/dashboard" method="post">
                                                 <div class="field ">
                                                     <label class="label"><h3>Add new vitals</h3>
@@ -210,93 +208,93 @@
                                                     <div class="field">
 
 
-<div class="level">
-    <div class="level-item">
-        <label class="label" for="LOC">LOC: 
-            <textarea name="LOC" id="notes" class="textarea" type="text" rows="2"  /></textarea>
-    </div>
-    <div class="level-item">
-        <label class="label" for="Pain">Pain: 
-            <textarea name="pain" id="notes" class="textarea" type="text" rows="2"  /></textarea>
-    </div>
-    <div class="level-item">
-        <label class="label" for="N/V">Nausea/Vomiting: 
-            <textarea name="N/V" id="notes" class="textarea" type="text" rows="2"  /></textarea>
-    </div>
-</div>
+                                                    <div class="level">
+                                                        <div class="level-item">
+                                                            <label class="label" for="LOC">LOC: 
+                                                                <textarea name="LOC" id="notes" class="textarea" type="text" rows="2"  /></textarea>
+                                                        </div>
+                                                        <div class="level-item">
+                                                            <label class="label" for="Pain">Pain: 
+                                                                <textarea name="pain" id="notes" class="textarea" type="text" rows="2"  /></textarea>
+                                                        </div>
+                                                        <div class="level-item">
+                                                            <label class="label" for="N/V">Nausea/Vomiting: 
+                                                                <textarea name="N/V" id="notes" class="textarea" type="text" rows="2"  /></textarea>
+                                                        </div>
+                                                    </div>
 
                                                     
                                                         <div class="field">
                                                         
-                                                            <button class="button is-link addVitals">
+                                                            <!-- <button class="button is-link addVitals">
                                                                 <span>Add</span>
                                                                 <span class="icon is-small">
                                                                     <i class="fas fa-plus"></i>
                                                                 </span>
-                                                            </button>
+                                                            </button> -->
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            
 
-            </div>
-            </form>
-            </td>
-            </tr>
-            </tfoot>
-            </table>
-                </div>
-              </article>
-            </div>
-            <div class="tile">
-              <div class="tile is-parent is-vertical">
-                <article class="tile is-child notification box">
-                  <p class="title">Patient Reported</p>
-                  <div class="content">
-                    <table>
-                        <tr>
-                        <th>Pregnant:
-                        </th>
-                        <td> no</td>
-                        <th>Smoker:
-                        </th>
-                        <td> no</td>
-                        </tr>
-                        
-                    </table>
-                    <table>
-                        <tr>
-                            <th>Reported Concerns</th>
-                        </tr>
-                        <td>
-                            <%= patient.reportedSymptoms.join(', ') %>
-                        </td>
-                    </table>
+                                                </div>
+                                                
+                                                </td>
+                                                </tr>
+                                                </tfoot>
+                                                </table>
+                                                    </div>
+                                                </article>
+                                                </div>
+                                                <div class="tile">
+                                                <div class="tile is-parent is-vertical">
+                                                    <article class="tile is-child notification box">
+                                                    <p class="title">Patient Reported</p>
+                                                    <div class="content">
+                                                        <table>
+                                                            <tr>
+                                                            <th>Pregnant:
+                                                            </th>
+                                                            <td> no</td>
+                                                            <th>Smoker:
+                                                            </th>
+                                                            <td> no</td>
+                                                            </tr>
+                                                            
+                                                        </table>
+                                                        <table>
+                                                            <tr>
+                                                                <th>Reported Concerns</th>
+                                                            </tr>
+                                                            <td>
+                                                                <%= patient.reportedSymptoms.join(', ') %>
+                                                            </td>
+                                                        </table>
 
-                </div>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <article class="tile is-child notification box">
-                  <p class="title">Other notes</p>
-                  <form action="addEmtInput" method="post" class="">
-                    <textarea class="textarea" placeholder="Enter details here" name="emtInput"
-                        id="emtInput">
-                    </textarea>
-                    <br />
-                    <button class="button is-link">
-                        <span>Save</span>
-                    </button>
-                </form>
-                </article>
-              </div>
-            </div>
-            
-          </div>
-          
-        </div>
+                                                    </div>
+                                                    </article>
+                                                </div>
+                                                <div class="tile is-parent">
+                                                    <article class="tile is-child notification box">
+                                                    <p class="title">Other notes</p>
+                                                  
+                                                        <textarea class="textarea" placeholder="Enter details here" name="emtInput"
+                                                            id="emtInput">
+                                                        </textarea>
+                                                        <br />
+                                                    </article>
+                                                </div>
+                                                </div>
+                                                <button class="button is-link is-large is-success addVitals">
+                                                    <span>Send to Hospital</span>
+                                                </button>
+                                            </form>  
+                                            <!-- form end -->
+                                            </div>
+                                            
+                                            </div>
 
-      </div>
+                                        </div>
       
 
     </body>
