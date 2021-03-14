@@ -9,9 +9,7 @@ function findPatient(patientID) {
 
 router.get('/patient-dashboard', (req, res) => {
     const patientID = req.query.patientId;
-    console.log(`Patient ID:${patientID}`);
     const patient = findPatient(patientID);
-    console.log(patient);
     if (patient) res.render('patient-dashboard', { patient });
     else res.render('404');
 });

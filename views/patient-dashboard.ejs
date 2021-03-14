@@ -54,11 +54,11 @@
             <div class="tile is-parent">
               <div class="tile is-child box">
                 <div class="patient-details">
-                  <p class="title is-4">Patient Name: John Doe
+                  <p class="title is-4">Patient Name: <%= `${patient.firstName} ${patient.lastName}` %> 
                     <span class="tag is-warning">Immediate</span>
                   </p>
 
-                  <p class="title is-5">Patient ID: 3714432
+                  <p class="title is-5">Patient ID: <%= patient.id %> 
                   </p>
 
                   <div class="detailed-info">
@@ -80,6 +80,8 @@
             </div>
 
             <div class="tile is-4 is-vertical is-parent vital-signs">
+              <% const vitals = patient.vitals; %>
+              <% const mostRecentVitals = vitals[vitals.length - 1]; %>
               <div class="card is-child box heart-rate">
                     <div class="icon-text">
                       <span class="icon has-text-danger">
@@ -89,11 +91,19 @@
                     </div>
 
                     <div class="range">
+                      <% let hr = mostRecentVitals.hr ; %>
+              
+                    <% if(hr >= 35 && hr <= 85){ %>
                       <span class="tag is-success">Normal</span>
+                    <% } else if (hr >= 85 && hr < 100){ %>  
+                      <span class="tag is-warning">Warning</span>
+                    <% } else { %>
+                      <span class="tag is-danger">Danger</span>
+                    <% } %>
                     </div>
 
                     <div class="level-item has-text-centered">
-                      <p class="title">62 /min</p>
+                      <p class="title"> <%= hr %>  /min</p>
                     </div>
               </div>
 
@@ -107,11 +117,24 @@
                   </div>
                   
                   <div class="range">
-                    <span class="tag is-warning">Warning</span>
+                    <% let sys = mostRecentVitals.bp.systolic; %>
+                    <% let diasys = mostRecentVitals.bp.diastolic; %>
+              
+                    <% if(sys < 120 && diasys < 80){ %>
+                      <span class="tag is-success">Normal</span>
+                    <% } else if (sys >= 120 && sys < 130 && diasys < 80){ %>  
+                      <span class="tag is-warning">Warning</span>
+                    <% } else if ((sys >= 130 && sys < 139) || (diasys >= 80 && diasys < 89)){ %>  
+                        <span class="tag is-warning">Warning</span>
+                    <% } else if ((sys > 140) || (diasys > 90)){ %>  
+                      <span class="tag is-danger">Danger</span>
+                    <% } else { %>
+                      <span class="tag is-warning">Warning</span>
+                  <% } %>
                   </div>
 
                   <div class="level-item has-text-centered">
-                    <p class="title"> 135 / 92 mmHg</p>
+                    <p class="title"> <%= `${sys} / ${diasys}` %> mmHg</p>
                   </div>
               </div>
 
@@ -127,11 +150,19 @@
               </div>
               
               <div class="range">
+              <% let o2 = mostRecentVitals.spO2; %>
+              
+              <% if(o2 >= 91 && o2 <= 100){ %>
+                <span class="tag is-success">Normal</span>
+              <% } else if (o2 >= 85 && o2 < 90){ %>  
+                <span class="tag is-warning">Warning</span>
+              <% } else { %>
                 <span class="tag is-danger">Danger</span>
+             <% } %>
               </div>
 
               <div class="level-item has-text-centered">
-                <p class="title"> 89 %</p>
+                <p class="title"> <%= o2 %>  %</p>
               </div>
           </div>
 
@@ -145,11 +176,21 @@
             </div>
             
             <div class="range">
-              <span class="tag is-success">Normal</span>
+              <% let rr = mostRecentVitals.rr; %>
+              
+              <% if(rr >= 12 && rr <= 20){ %>
+                <span class="tag is-success">Normal</span>
+              <% } else if (rr >= 20 && rr < 30){ %>  
+                <span class="tag is-warning">Warning</span>
+              <% } else if (rr <= 8 || rr >= 30){ %>
+                <span class="tag is-danger">Danger</span> 
+              <% } else { %>
+                <span class="tag is-warning">Warning</span>
+             <% } %>
             </div>
 
             <div class="level-item has-text-centered">
-              <p class="title"> 26 b/min</p>
+              <p class="title"> <%= rr %> /min</p>
             </div>
         </div>
 
@@ -163,11 +204,21 @@
             </div>
             
             <div class="range">
-              <span class="tag is-success">Normal</span>
+              <% let temp = mostRecentVitals.temp; %>
+              
+              <% if(temp >= 36 && temp <= 38){ %>
+                <span class="tag is-success">Normal</span>
+              <% } else if (temp >= 38 && temp < 40){ %>  
+                <span class="tag is-warning">Warning</span>
+              <% } else if (temp >= 40){ %>
+                <span class="tag is-danger">Danger</span> 
+              <% } else { %>
+                <span class="tag is-warning">Warning</span>
+             <% } %>
             </div>
 
             <div class="level-item has-text-centered">
-              <p class="title"> 37 C</p>
+              <p class="title"> <%= temp %> C</p>
             </div>
         </div>
 

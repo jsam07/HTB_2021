@@ -1,5 +1,5 @@
 function addVitals() {
-  let vitalsObj = req.body
+    const vitalsObj = req.body;
 }
 
-module.exports = addVitals
+module.exports = addVitals;

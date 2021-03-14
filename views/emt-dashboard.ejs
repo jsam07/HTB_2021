@@ -134,7 +134,7 @@
                      <% let i=0; %> <% for(i=0; i < patient["vitals"].length; i++) { %>
                             <tr>
                                 <td>
-                                    <%= patient["vitals"][i]["timestamp"] %>
+                                    <%= patient["vitals"][i]["time"].toLocaleString() %>
                                 </td>
                                 <td>
                                     <%= patient["vitals"][i]["hr"] %> 
