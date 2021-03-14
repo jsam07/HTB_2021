@@ -35,19 +35,20 @@
     </nav>
     <section class="section">
       <!-- tile container -->
-      <div class="tile is-ancestor">
-        <!-- tiles -->
-        <!-- takes in patients object -->
+      <div class="tile is-ancestor is-fluid">
+        <!-- takes in patients object -- id = patient number, triage = value of 'green' [primary], 'yellow' [warning], or 'red' [danger], symptoms = an array of symptoms -->
+        
         <% patients.forEach(patient => { %>
           <div class="tile is-parent">
-            <article class="tile is-child box">
-              <p class="title"><%= patient.id  %></p>
-              <p class="content"><%= patient.symptops %></p>
+            <article class="tile is-child box has-background-<%= patient.triage %>"> 
+              <p class="title">Patient: <%= patient.id  %></p>
+              <% for (i = 0; i < 2; i++) { %>
+                <p class="content"><%= patient.symptoms[i] %></p>
+              <% } %>
             </article>
           </div>
         <% }); %>
-          
-        <%  %> 
+
           <div class="tile is-parent">
             <article class="tile is-child box">
               <p class="title">One</p>
