@@ -72,7 +72,7 @@ router.get('/dashboard', (req, res) => {
 
 router.post('/dashboard', (req, res) => {
     const patientInfo = req.body;
-    res.render('emt-dashboard', { patient, timestamp: new Date(), vitals: req.body });
+    res.render('emt-dashboard', { patientInfo, timestamp: new Date(), vitals: req.body });
 });
 
 module.exports = router;
