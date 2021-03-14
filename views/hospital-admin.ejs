@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Alert - Hospital Dashboard</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Alert</title>
 
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="bulmaStyles.css">
-    <link rel="stylesheet" href="modal.css">
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- SCRIPTS -->
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/bulmaStyles.css">
+  <link rel="stylesheet" type="text/css" href="/css/modal.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  
+  <!-- SCRIPTS -->
 
-    <!-- jQuery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="index.js"></script>
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/js/hospitalDashboard.js"></script>
 
-    <!-- Ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -38,57 +38,36 @@
       <div class="columns is-multiline">
         <!-- takes in patients object -- id = patient number, triage = value of 'green' [primary], 'yellow' [warning], or 'red' [danger], symptoms = an array of symptoms -->
         
-        <% patients.forEach(patient => { %>
+        <% for (i = 0; i < patients.length; i++) { %>
           <!-- set triage BG and text colour -->
           <% let triage; %>
           <% let text; %>
-          <% if (patient.triage == 'green') { %>
+          <% if (patients[i].triage == 'green') { %>
             <% triage = 'primary'; %>
             <% text = 'white'; %>
-          <% } else if (patient.triage == 'yellow') { %>
+          <% } else if (patients[i].triage == 'yellow') { %>
             <% triage = 'warning'; %>
             <% text = 'black'; %>
-          <% } else if (patient.triage == 'red') { %>
+          <% } else if (patients[i].triage == 'red') { %>
             <% triage = 'danger'; %>
             <% text = 'white'; %>
           <% } %>
           <!-- input patient data into card previews -->
           <div class="column is-one-third">
             <article class="tile is-child box has-background-<%= triage %>"> 
-              <p class="title has-text-<%= text %>">Patient: <%= patient.id  %></p>
-              <% for (i = 0; i < 2; i++) { %>
-                <p class="content has-text-<%= text %>"><%= patient.symptoms[i] %></p>
+              <p id="<%= i %>" class="title has-text-<%= text %>">Patient: <%= patients[i].id %></p>
+              <% for (j = 0; j < 3; j++) { %>
+                <span class="content has-text-<%= text %>"><%= patients[i].symptoms[j] %></span>
+                <% if (j != 2 ) {%>
+                  <span class="content has-text-<%= text %>">//</span>
+                <% } %>
               <% } %>
+              <div>
+                <button class="button is-dark mt-4 " onclick="window.location.href='admin/patient-dashboard?patientId=<%= patients[i].id %>'">See Chart</button>
+              </div>
             </article>
           </div>
-        <% }); %>
-
-          <div class="column is-one-third">
-            <article class="tile is-child box">
-              <p class="title">One</p>
-              <p class="content">Subtitle</p>
-            </article>
-          </div>
-          <div class="column is-one-third">
-            <article class="tile is-child box">
-              <p class="title">Two</p>
-              <p class="subtitle">Subtitle</p>
-            </article>
-          </div>
-          <div class="column is-one-third">
-            <article class="tile is-child box has-background-primary">
-              <p class="title has-text-white">Four</p>
-              <p class="subtitle has-text-white">Subtitle</p>
-            </article>
-          </div>
-          <div class="column is-one-third">
-            <article class="tile is-child box has-background-primary">
-              <p class="title has-text-white">Four</p>
-              <p class="subtitle has-text-white">Subtitle</p>
-            </article>
-          </div>
-        <div>
-        </div>
+        <% }; %>
       </div>
     </section>
 </body>
