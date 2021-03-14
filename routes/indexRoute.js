@@ -10,7 +10,29 @@ router.get('/', (req, res) => {
 //---------- EMT Route -----------/ /
 // localhost:8081/emt/dashboard
 router.get('/emt/dashboard', (req, res) => {
-    res.render('emt/dashboard')
+    res.render('emt/dashboard');
 })
 
-module.exports = router
+
+
+
+router.get('/hospital-dashboard', (req, res) => {
+    res.render('hospital-admin', { patients: patients }); // change back to index.ejs 
+});
+
+module.exports = router;
+
+
+
+
+// hardcoded patient data
+
+
+
+let patients = [
+    {
+    id: Math.floor(100000 + Math.random() * 900000),
+    symptoms: ['shortness of breath, tightness in chest, dizziness, nausia'],
+    triage: 'green'
+}
+];

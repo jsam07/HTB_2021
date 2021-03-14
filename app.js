@@ -9,6 +9,7 @@ require('dotenv').config();
  * CONSTANTS
  */
 const PORT = process.env.PORT || 8080;
+const PUBLIC_DIR = path.join(__dirname, 'public');
 
 /**
  * START EXPRESS
@@ -30,11 +31,12 @@ app.use(morgan('combined'));
 /**
   * APP CONFIGURATION
   */
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(PUBLIC_DIR));
 
 /**
  * ROUTES
  */
+const adminRoute = require('./routes/adminRoute');
 const indexRoute = require('./routes/indexRoute');
 const errorRoute = require('./routes/errorRoute');
 
@@ -49,6 +51,7 @@ app.use(express.urlencoded({ extended: true }));
  * ROUTES MATCHERS
  */
 app.use('/', indexRoute);
+app.use('/admin', adminRoute);
 app.use('*', errorRoute);
 
 /**
