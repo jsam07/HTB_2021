@@ -1,6 +1,6 @@
 const express = require('express')
 // const { ensureAuthenticated } = require('../middleware/checkAuth');
-const database = require('../database/database.js')
+const database = require('../database/database.js');
 
 const router = express.Router()
 
@@ -20,10 +20,7 @@ router.get('/hospital-dashboard', (req, res) => {
     res.render('hospital-admin', { patients: database }) // change back to index.ejs
 })
 
-module.exports = router
-let patients = database;
-let patientId = Object.keys(patients)[0]
-console.log(patients[patientId]);
+
 // hardcoded patient data
 
 // let patients = [
