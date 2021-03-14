@@ -3,17 +3,7 @@ const express = require('express');
 
 const router = express.Router();
 
-// ---------- hospital Route -----------/ /
-// localhost:8081/hosp/dashboard
-router.get('/dashboard', (req, res) => {
-    res.render('hospital-admin', { patients });
-});
-
-module.exports = router;
-
-// hardcoded patient data
-
-let patients = [
+const patients = [
     {
         id: Math.floor(100000 + Math.random() * 900000),
         symptoms: [
@@ -40,3 +30,13 @@ const allVitals = [
         spO2: '89',
     },
 ];
+
+// ---------- hospital Route -----------/ /
+// localhost:8081/hosp/dashboard
+router.get('/dashboard', (req, res) => {
+    res.render('hospital-admin', { patients });
+});
+
+module.exports = router;
+
+// hardcoded patient data
