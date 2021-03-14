@@ -1,4 +1,5 @@
 const express = require('express')
+const database = require('../database/database.js')
 // const { ensureAuthenticated } = require('../middleware/checkAuth');
 
 const router = express.Router()
@@ -8,8 +9,8 @@ const router = express.Router()
 // localhost:8081/emt/dashboard
 router.get('/dashboard', (req, res) => {
     //send correct patient to emt
-    // let userID = 
-    res.render('emt-dashboard', { patient: patients[0], vitals: allVitals })
+    console.log(database[123456])
+    res.render('emt-dashboard', { patient: database[123456] })
 })
 
 
