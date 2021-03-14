@@ -1,5 +1,4 @@
 const patientDatabase = [
-
     {
         id: '77598365',
         symptoms: [
@@ -32,7 +31,20 @@ const patientDatabase = [
                 LOC: 'Somnolent',
                 'N/V': 'Nauseous',
             },
-
+            {
+                time: new Date(),
+                hr: 80,
+                rr: 15,
+                bp: {
+                    systolic: 130,
+                    diastolic: 70,
+                },
+                temp: 38.5,
+                spO2: 85,
+                pain: '9/10 sharp pain to upper middle chest',
+                LOC: 'Somnolent',
+                'N/V': 'Nauseous',
+            },
         ],
         allergies: ['Peanuts', 'Anesthetics', 'Cats', 'Gluten'],
         reportedSymptoms: ['Breathlessness', 'Chest pain'],
@@ -41,9 +53,7 @@ const patientDatabase = [
 
     {
         id: '36591661',
-        symptoms: [
-            '',
-        ],
+        symptoms: [''],
         triage: 'Minor',
         firstName: 'Thierry',
         lastName: 'Hermès',
@@ -68,7 +78,6 @@ const patientDatabase = [
                 LOC: 'Somnolent',
                 'N/V': 'N/A',
             },
-
         ],
         allergens: [],
         reportedSymptoms: [''],
@@ -76,9 +85,7 @@ const patientDatabase = [
     },
     {
         id: '92348795',
-        symptoms: [
-            'Tachypnoea',
-        ],
+        symptoms: ['Tachypnoea'],
         triage: 'Immediate',
         firstName: 'Justine',
         lastName: 'Smith',
@@ -103,7 +110,6 @@ const patientDatabase = [
                 LOC: 'Obtunded',
                 'N/V': 'N/A',
             },
-
         ],
         allergens: ['Lupin', 'Soya', 'Molluscs'],
         reportedSymptoms: ['Tightness in chest'],
@@ -111,9 +117,7 @@ const patientDatabase = [
     },
     {
         id: '57884361',
-        symptoms: [
-            'Tachypnoea',
-        ],
+        symptoms: ['Tachypnoea'],
         triage: 'Expectant',
         firstName: 'Tan',
         lastName: 'Smith',
@@ -138,13 +142,11 @@ const patientDatabase = [
                 LOC: 'Obtunded',
                 'N/V': 'N/A',
             },
-
         ],
         allergens: [],
         reportedSymptoms: [],
         other: '',
     },
+]
 
-];
-
-module.exports = { patientDatabase };
+module.exports = { patientDatabase }

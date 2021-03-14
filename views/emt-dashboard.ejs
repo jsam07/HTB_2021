@@ -116,7 +116,7 @@
                 <p class="title">Assessments</p>
 
                 <div class="content">
-                  <table class="table is-hoverable is-striped is-narrow is-fullwidth">
+                  <table class="table is-hoverable is-striped is-narrow is-fullwidth" id="vitals-table">
                     <thead>
                         <tr>
                             <th>Time</th>
@@ -127,11 +127,11 @@
                             <th>SpO2 (%)</th>
                         </tr>
                     </thead>
-  
+  <tbody>
                      <% let i=0; %> <% for(i=0; i < patient["vitals"].length; i++) { %>
                             <tr>
                                 <td>
-                                    <%= patient["vitals"][i]["time"].toLocaleString() %>
+                                    <%= patient["vitals"][i]["time"] %>
                                 </td>
                                 <td>
                                     <%= patient["vitals"][i]["hr"] %> 
@@ -161,6 +161,7 @@
                                 </td>
                             </tr>
  <% } %>
+                        </tbody>
                                 <tfoot>
                                     <tr>
                                         <td colspan="6">
