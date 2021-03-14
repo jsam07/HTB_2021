@@ -53,17 +53,18 @@
             <% text = 'white'; %>
           <% } %>
           <!-- input patient data into card previews -->
-          <a href="/"><div class="column is-one-third">
+          <div class="column is-one-third">
             <article class="tile is-child box has-background-<%= triage %>"> 
               <p id="<%= i %>" class="title has-text-<%= text %>">Patient: <%= patients[i].id %></p>
               <% for (j = 0; j < 3; j++) { %>
                 <span class="content has-text-<%= text %>"><%= patients[i].symptoms[j] %></span>
-                <% if (i != 2 ) {%>
+                <% if (j != 2 ) {%>
                   <span class="content has-text-<%= text %>">//</span>
                 <% } %>
               <% } %>
+              <button class="button is-dark" onclick="window.location.href='/admin/patient-dashboard?patientId=<%= patient[i].id %>'">See Chart</button>
             </article>
-          </div></a>
+          </div>
         <% }; %>
       </div>
     </section>

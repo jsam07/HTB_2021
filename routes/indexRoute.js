@@ -19,7 +19,6 @@ module.exports = router;
 // hardcoded patient data
 
 
-
 let patients = [
     {
     id: Math.floor(100000 + Math.random() * 900000),
