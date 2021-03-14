@@ -21,7 +21,9 @@ router.get('/hospital-dashboard', (req, res) => {
 })
 
 module.exports = router
-
+let patients = database;
+let patientId = Object.keys(patients)[0]
+console.log(patients[patientId]);
 // hardcoded patient data
 
 // let patients = [
