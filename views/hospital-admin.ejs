@@ -39,11 +39,23 @@
         <!-- takes in patients object -- id = patient number, triage = value of 'green' [primary], 'yellow' [warning], or 'red' [danger], symptoms = an array of symptoms -->
         
         <% patients.forEach(patient => { %>
+          <% let triage; %>
+          <% let text; %>
+          <% if (patient.triage == 'green') { %>
+            <% triage = 'primary'; %>
+            <% text = 'white'; %>
+          <% } else if (patient.triage == 'yellow') { %>
+            <% triage = 'warning'; %>
+            <% text = 'black'; %>
+          <% } else if (patient.triage == 'red') { %>
+            <% triage = 'danger'; %>
+            <% text = 'white'; %>
+          <% } %>
           <div class="tile is-parent">
-            <article class="tile is-child box has-background-<%= patient.triage %>"> 
-              <p class="title">Patient: <%= patient.id  %></p>
+            <article class="tile is-child box has-background-<%= triage %>"> 
+              <p class="title has-text-<%= text %>">Patient: <%= patient.id  %></p>
               <% for (i = 0; i < 2; i++) { %>
-                <p class="content"><%= patient.symptoms[i] %></p>
+                <p class="content has-text-<%= text %>"><%= patient.symptoms[i] %></p>
               <% } %>
             </article>
           </div>
