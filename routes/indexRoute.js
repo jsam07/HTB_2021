@@ -23,7 +23,12 @@ module.exports = router;
 let patients = [
     {
     id: Math.floor(100000 + Math.random() * 900000),
-    symptoms: ['shortness of breath, tightness in chest, dizziness, nausia'],
-    triage: 'green'
-}
+    symptoms: ['shortness of breath', 'tightness in chest', 'dizziness', 'nausea'],
+    triage: 'yellow'
+    },
+    {
+    id: Math.floor(100000 + Math.random() * 900000),
+    symptoms: ['shortness of breath', 'tightness in chest', 'dizziness', 'nausea'],
+    triage: 'yellow'
+    }
 ];
