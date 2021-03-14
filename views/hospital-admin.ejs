@@ -38,33 +38,33 @@
       <div class="columns is-multiline">
         <!-- takes in patients object -- id = patient number, triage = value of 'green' [primary], 'yellow' [warning], or 'red' [danger], symptoms = an array of symptoms -->
         
-        <% for (i = 0; i < patients.length; i++)  patients.forEach(patient => { %>
+        <% for (i = 0; i < patients.length; i++) { %>
           <!-- set triage BG and text colour -->
           <% let triage; %>
           <% let text; %>
-          <% if (patient.triage == 'green') { %>
+          <% if (patients[i].triage == 'green') { %>
             <% triage = 'primary'; %>
             <% text = 'white'; %>
-          <% } else if (patient.triage == 'yellow') { %>
+          <% } else if (patients[i].triage == 'yellow') { %>
             <% triage = 'warning'; %>
             <% text = 'black'; %>
-          <% } else if (patient.triage == 'red') { %>
+          <% } else if (patients[i].triage == 'red') { %>
             <% triage = 'danger'; %>
             <% text = 'white'; %>
           <% } %>
           <!-- input patient data into card previews -->
-          <div class="column is-one-third">
+          <a href="/"><div class="column is-one-third">
             <article class="tile is-child box has-background-<%= triage %>"> 
-              <p class="title has-text-<%= text %>">Patient: <%= patient.id %></p>
-              <% for (i = 0; i < 3; i++) { %>
-                <span class="content has-text-<%= text %>"><%= patient.symptoms[i] %></span>
+              <p id="<%= i %>" class="title has-text-<%= text %>">Patient: <%= patients[i].id %></p>
+              <% for (j = 0; j < 3; j++) { %>
+                <span class="content has-text-<%= text %>"><%= patients[i].symptoms[j] %></span>
                 <% if (i != 2 ) {%>
                   <span class="content has-text-<%= text %>">//</span>
                 <% } %>
               <% } %>
             </article>
-          </div>
-        <% }); %>
+          </div></a>
+        <% }; %>
       </div>
     </section>
 </body>
