@@ -1,6 +1,5 @@
-let patients = [
-    {
-        id: Math.floor(100000 + Math.random() * 900000),
+const patients = {
+    123456: {
         symptoms: [
             'shortness of breath', 'tightness in chest', 'dizziness', 'nausea'
         ],
@@ -11,13 +10,66 @@ let patients = [
         sex: 'F',
         chronicIllnesses: ["Diabetes", "Hypertension"],
         medications: ["Canagliflozin", "Lisinopril"],
-        timestamp: "12:32",
-        hr: "54",
-        rr: "24",
-        bp: "140/90",
-        temp: "38",
-        spO2: "89"
+        isSmoker: true,
+        isPregnant: false,
+        vitals: [
+            {
+                timestamp: "12:32", // new Date().toString()
+                hr: 54, // number
+                rr: 24, // number
+                bp: {
+                    systolic: 140,
+                    diastolic: 90,
+                    }, // bp.systolic + "/" bp.distolic
+                temp: 38, // number
+                spO2: 89,
+                notes: {
+                    pain: "",
+                    LOC: "",
+                    "N/V": "",
+                },
+            }
+        ],
+        allergies: ["peanuts", "anesthetics", "cats", "gluten"],
+        reportedSymptoms: ["breathlessness", "chest pain"],
+        other: "this lady full of regret",
     },
-];
 
-module.exports =  patients;
+    543232: {
+        symptoms: [
+            'shortness of breath', 'tightness in chest', 'dizziness', 'nausea'
+        ],
+        triage: 'green',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        age: 44,
+        sex: 'F',
+        chronicIllnesses: ["Diabetes", "Hypertension"],
+        medications: ["Canagliflozin", "Lisinopril"],
+        isSmoker: true,
+        isPregnant: false,
+        vitals: [
+            {
+                timestamp: "12:32", // new Date().toString()
+                hr: 54, // number
+                rr: 24, // number
+                bp: {
+                    systolic: 140,
+                    diastolic: 90,
+                    }, // bp.systolic + "/" bp.distolic
+                temp: 38, // number
+                spO2: 89,
+                notes: {
+                    pain: "",
+                    LOC: "",
+                    "N/V": "",
+                },
+            }
+        ],
+        allergies: ["peanuts", "anesthetics", "cats", "gluten"],
+        reportedSymptoms: ["breathlessness", "chest pain"],
+        other: "this lady full of regret",
+    },
+};
+
+module.exports = patients;
