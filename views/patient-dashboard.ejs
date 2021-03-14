@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Alert - Patient Dashboard</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/bulmaStyles.css">
+    <link rel="stylesheet" type="text/css" href="/css/modal.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
+    <!-- SCRIPTS -->
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/index.js"></script>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+          <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <div class="tile is-child box">
+                <div class="patient-details">
+                  <p class="title is-4">Patient Name: John Doe
+                    <span class="tag is-warning">Immediate</span>
+                  </p>
+
+                  <p class="title is-5">Patient ID: 3714432
+                  </p>
+
+                  <div class="detailed-info">
+                    <div class="emt pb-4">
+                      <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id neque felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                      </p>
+                    </div>
+                    <div class="patient">
+                      <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mauris erat, molestie nec consequat ut, maximus vitae mauris. Cras eget aliquam purus. Quisque vitae convallis nunc. Donec eu congue purus. Donec ultricies congue sapien vel cursus. Nam ornare fermentum magna. Mauris erat dolor, elementum venenatis commodo non, cursus vitae nisl.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+
+              </div>
+            </div>
+
+            <div class="tile is-4 is-vertical is-parent vital-signs">
+              <div class="card is-child box heart-rate">
+                    <div class="icon-text">
+                      <span class="icon has-text-danger">
+                        <ion-icon name="pulse-outline"></ion-icon>
+                      </span>
+                      <span>Heart Rate</span>
+                    </div>
+
+                    <div class="range">
+                      <span class="tag is-success">Normal</span>
+                    </div>
+
+                    <div class="level-item has-text-centered">
+                      <p class="title">62 /min</p>
+                    </div>
+              </div>
+
+              <div class="card is-child box blood-pressure">
+                  <div class="icon-text">
+                    <span class="icon has-text-danger">
+                      <i class="fas fa-heartbeat"></i>
+                    </span>
+                    <span>Blood Pressure</span>
+                    
+                  </div>
+                  
+                  <div class="range">
+                    <span class="tag is-warning">Warning</span>
+                  </div>
+
+                  <div class="level-item has-text-centered">
+                    <p class="title"> 135 / 92 mmHg</p>
+                  </div>
+              </div>
+
+              
+
+            <div class="card is-child box oxygen-saturation">
+              <div class="icon-text">
+                <span class="icon has-text">
+                  <ion-icon src="/images/svg/oxygen.svg"></ion-icon>
+                </span>
+                <span>Oxygen Saturation</span>
+                
+              </div>
+              
+              <div class="range">
+                <span class="tag is-danger">Danger</span>
+              </div>
+
+              <div class="level-item has-text-centered">
+                <p class="title"> 89 %</p>
+              </div>
+          </div>
+
+          <div class="card is-child box respiratory-rate">
+            <div class="icon-text">
+              <span class="icon has-text-danger">
+                <ion-icon src="/images/svg/lungs.svg"></ion-icon>
+              </span>
+              <span>Respiratory Rate</span>
+              
+            </div>
+            
+            <div class="range">
+              <span class="tag is-success">Normal</span>
+            </div>
+
+            <div class="level-item has-text-centered">
+              <p class="title"> 26 b/min</p>
+            </div>
+        </div>
+
+          <div class="card is-child box body-temperature">
+            <div class="icon-text">
+              <span class="icon has-text-info">
+                <i class="fas fa-thermometer-half"></i>
+              </span>
+              <span>Body Temperature</span>
+              
+            </div>
+            
+            <div class="range">
+              <span class="tag is-success">Normal</span>
+            </div>
+
+            <div class="level-item has-text-centered">
+              <p class="title"> 37 C</p>
+            </div>
+        </div>
+
+
+
+
+                
+
+
+
+              
+            </div>
+
+              
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
+</html>
